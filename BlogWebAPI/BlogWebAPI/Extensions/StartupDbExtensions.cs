@@ -16,13 +16,12 @@ namespace BlogWebAPI.Extensions
             {
                 blogContext.Database.EnsureCreated();
                 blogContext.Database.Migrate();
+                DbInitializerSeedData.InitializeDatabase(blogContext);
             }
             catch (Exception ex) {
                 var logger = services.GetRequiredService<ILogger<Program>>();
                 logger.LogError($"Migration error {ex.Message}");
             }
-
-            DbInitializerSeedData.InitializeDatabase(blogContext);
         }
     }
 }
