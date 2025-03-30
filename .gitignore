@@ -20,8 +20,9 @@ logs/
 *.tmp
 
 # Ignore environment variables and configurations
-# .env
-# appsettings*.json
+.env
+.env.*
+appsettings.*.json
 
 # Ignore Docker-related files
 # .dockerignore
