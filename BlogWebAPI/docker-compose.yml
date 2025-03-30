@@ -39,6 +39,10 @@ services:
     build:
       context: .
       dockerfile: BlogWebAPI/Dockerfile
+      args:
+        - ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
     depends_on:
       - mssql-container
       - redis

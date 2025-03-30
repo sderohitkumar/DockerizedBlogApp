@@ -20,7 +20,4 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 
-ARG ENVIRONMENT=Production
-ENV ASPNETCORE_ENVIRONMENT=$ENVIRONMENT
-
 ENTRYPOINT ["dotnet", "BlogWebAPI.dll"]
