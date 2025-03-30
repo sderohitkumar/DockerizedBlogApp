@@ -1,7 +1,6 @@
 using BlogWebAPI.Context;
 using BlogWebAPI.Extensions;
 using BlogWebAPI.Services;
-using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
