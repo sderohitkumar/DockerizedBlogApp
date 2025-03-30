@@ -1,6 +1,6 @@
  # Brief overview of the multi-service application
  - Created a blog application which allows user to create, read, update, delete blogs.
- - The application contains 3 initial blogs whose are created by seeding the data when application runs for the very first time.
+ - The application contains 3 initial blogs which are created by seeding the data when application runs for the very first time.
  - The blog application consists of 4 different components -
      - Frontend (React)
      - Backend (.net core web api)
