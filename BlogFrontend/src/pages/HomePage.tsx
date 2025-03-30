@@ -1,9 +1,9 @@
-import { useNavigate } from "react-router-dom"
-import BlogList from "../components/BlogList"
-import { PlusCircleIcon } from "../components/Icons"
+import { useNavigate } from "react-router-dom";
+import BlogList from "../components/BlogList";
+import { PlusCircleIcon } from "../components/Icons";
 
 export default function HomePage() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <div className="container mx-auto py-8 px-4">
@@ -19,6 +19,5 @@ export default function HomePage() {
       </div>
       <BlogList />
     </div>
-  )
+  );
 }
-

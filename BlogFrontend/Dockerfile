@@ -8,7 +8,8 @@ RUN npm install
 
 COPY . .
 
-RUN npm run build
+ARG ENVIRONMENT
+RUN npm run build:$ENVIRONMENT
 
 FROM nginx:alpine
 

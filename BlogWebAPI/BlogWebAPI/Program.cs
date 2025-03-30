@@ -2,7 +2,7 @@ using BlogWebAPI.Context;
 using BlogWebAPI.Extensions;
 using BlogWebAPI.Services;
 
-var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "production";
+var environment = Environment.GetEnvironmentVariable("APP_ENV") ?? "production";
 
 var builder = WebApplication.CreateBuilder(args);
 

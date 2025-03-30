@@ -1,3 +1,3 @@
 export const dataAPI = {
-    baseUrl: "http://localhost:5283/api"
+    baseUrl: import.meta.env.VITE_API_BASE_URL
 }

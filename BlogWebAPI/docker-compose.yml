@@ -11,7 +11,7 @@ services:
     container_name: mssql-container
     environment:
       - ACCEPT_EULA=Y
-      - SA_PASSWORD=BlogDatabase@2025
+      - SA_PASSWORD=${DATABASE_PASSWORD}
     ports:
       - 8022:1433
     networks:
@@ -40,9 +40,9 @@ services:
       context: .
       dockerfile: BlogWebAPI/Dockerfile
       args:
-        - ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
+        - ENVIRONMENT=${APP_ENV}
     environment:
-      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
+      - APP_ENV=${APP_ENV}
     depends_on:
       - mssql-container
       - redis
@@ -54,6 +54,8 @@ services:
     build:
       context: ../BlogFrontend
       dockerfile: Dockerfile
+      args:
+        - ENVIRONMENT=${APP_ENV}
     ports:
       - 5173:5173
       - 3000:80

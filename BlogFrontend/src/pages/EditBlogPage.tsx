@@ -23,11 +23,11 @@ export default function EditBlogPage() {
   };
 
   useEffect(() => {
-    getBlogById()
+    getBlogById();
     setLoading(false);
   }, [id]);
 
-  const handleSubmit = async(blogData: Omit<BlogPost, "id">) => {
+  const handleSubmit = async (blogData: Omit<BlogPost, "id">) => {
     try {
       const newBlogResponse = await fetch(`${dataAPI.baseUrl}/Blog/${id}`, {
         method: "PUT",
@@ -37,12 +37,11 @@ export default function EditBlogPage() {
         body: JSON.stringify(blogData),
       });
 
-      if(newBlogResponse.ok){
+      if (newBlogResponse.ok) {
       }
-
     } finally {
       navigate(`/blog/${id}`);
-    }      
+    }
   };
 
   if (loading) {
