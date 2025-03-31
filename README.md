@@ -6,14 +6,17 @@
      - Backend (.net core web api)
      - SQL database
      - Redis(in-memory database)
-  - For SQL, default image for docker hub is chosen : **mcr.microsoft.com/mssql/server:latest**
-  - For Redis, default image for docker hub is chosen: **redis:latest**
-  - For Backend API and frontend, created custom images and deployed onto my docker hub acccount.
-    - Backend : **rohitkumar09/blogapp:blogapi-v1**
-    - Frontend : **rohitkumar09/blogapp:blogfrontend-v1**
   - Docker networking is added to create a common network so that different application can communicate with each other.
   - Added support of environment variables to handle different environments.
 
+# Images used in Application 
+- SQL server -  **mcr.microsoft.com/mssql/server:latest**
+- Redis - **redis:latest**
+- Backend : **rohitkumar09/blogapp:blogapi-v1**
+    - Custom Image created from : BlogWebAPI\BlogWebAPI\Dockerfile
+- Frontend : **rohitkumar09/blogapp:blogfrontend-v1**
+    - Custom Image created from : BlogWebApp\BlogFrontend\Dockerfile
+  
 # To run the application
 - The application utilizes docker compose to manage and run all the services at once.
 - Firstly, go inside the BlogWebApp\BlogWebAPI folder, create a new .env file, a sample .env.example is already added for reference what all variables are needed.
