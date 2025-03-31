@@ -27,18 +27,14 @@
 - Once images are downloaded, containers are created and application is started.
 
 # Application screenshot:
+
 - **Blog Home Page**:
        ![image](https://github.com/user-attachments/assets/827ea62a-776c-4db4-9a32-a74f342d50aa) 
 - **Blog Detail Page**:
        ![image](https://github.com/user-attachments/assets/965f0452-c9a5-4787-86c7-4545f15f81eb)
 - **Blog Edit Page**:
        ![image](https://github.com/user-attachments/assets/27047b1c-e205-4b05-9c4d-7414ee9c0f8e)
-
 - **Blog Create Page**:
        ![image](https://github.com/user-attachments/assets/8df863cf-253a-4e36-a160-ab6f86af2ecd)
-
 - **Blog Delete**:
        ![image](https://github.com/user-attachments/assets/c5deee40-800e-4ced-871a-73ee9849f870)
-
-
-
