@@ -1,0 +1,77 @@
+
+# Ignore build and publish outputs
+bin/
+obj/
+.vscode/
+.vs/
+out/
+
+# Ignore user-specific settings
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.swp
+
+# Ignore log and temp files
+logs/
+*.log
+!logs/.gitkeep
+*.tmp
+
+# Ignore environment variables and configurations
+.env
+.env.*
+appsettings.*.json
+
+# Ignore Docker-related files
+# .dockerignore
+# docker-compose.override.yml
+
+# Ignore frontend dependencies
+BlogFrontend/node_modules/
+BlogFrontend/.vite/
+BlogFrontend/dist/
+
+# Ignore compiled files and other generated artifacts
+*.dll
+*.exe
+*.pdb
+*.cache
+*.lock
+*.pid
+
+# Ignore IDE-specific files
+.idea/
+*.iml
+
+# Ignore NPM/Yarn-related files
+npm-debug.log
+yarn-error.log
+pnpm-debug.log
+
+# Ignore MacOS and system-specific files
+.DS_Store
+Thumbs.db
+
+
+# Configurations & Secrets
+# appsettings.json
+# secrets.json
+# .env
+# *.config
+
+# Docker & Kubernetes
+# .dockerignore
+# Dockerfile
+# docker-compose.override.yml
+
+# Database & Migrations
+# migrations/
+# *.mdf
+# *.ldf
+
+# Redis & Cache
+# *.rdb
+# *.log
+# dump.rdb
