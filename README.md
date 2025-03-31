@@ -8,6 +8,9 @@
      - Redis(in-memory database)
   - Docker networking is added to create a common network so that different application can communicate with each other.
   - Added support of environment variables to handle different environments.
+       - development
+       - testing
+       - production
 
 # Images used in Application 
 - SQL server -  **mcr.microsoft.com/mssql/server:latest**
