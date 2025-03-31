@@ -22,7 +22,7 @@ logs/
 # Ignore environment variables and configurations
 .env
 .env.*
-appsettings.*.json
+# appsettings.*.json
 
 # Ignore Docker-related files
 # .dockerignore

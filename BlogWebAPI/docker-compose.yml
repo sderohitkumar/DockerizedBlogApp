@@ -1,10 +1,6 @@
 networks:
   blogappnetwork:
 
-volumes:
-  mssql_data:
-  redis_data:
-
 services:
   mssql-container:
     image: mcr.microsoft.com/mssql/server:latest
@@ -16,8 +12,6 @@ services:
       - 8022:1433
     networks:
       - blogappnetwork
-    volumes:
-      - mssql_data:/var/opt/mssql
 
   redis:
     image: redis:latest
@@ -27,8 +21,6 @@ services:
       - 6379:6379
     networks:
       - blogappnetwork
-    volumes:
-      - redis_data:/data
     command: ["redis-server", "--appendonly", "yes"]
  
   blogwebapi:
