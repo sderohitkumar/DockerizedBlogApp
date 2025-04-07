@@ -7,8 +7,8 @@ on:
     branches: [ "main" ]
 
 env:
-  BACKEND_IMAGE: rohitkumar09/blogapp:blogapi-v1
-  FRONTEND_IMAGE: rohitkumar09/blogapp:blogfrontend-v1
+  BACKEND_IMAGE: rohitkumar09/blogapp:blogapi-v2
+  FRONTEND_IMAGE: rohitkumar09/blogapp:blogfrontend-v2
 
 jobs:
   build:
@@ -25,3 +25,9 @@ jobs:
 
      - name: Build frontend image
        run: docker build -t $FRONTEND_IMAGE -f BlogFrontend/Dockerfile ./BlogFrontend
+
+     - name: Push backend image
+       run: docker push $BACKEND_IMAGE
+
+     - name: Push frontend image
+       run: docker push $FRONTEND_IMAGE
