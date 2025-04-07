@@ -24,4 +24,4 @@ jobs:
        run: docker build -t $BACKEND_IMAGE -f BlogWebAPI/BlogWebAPI/Dockerfile ./BlogWebAPI
 
      - name: Build frontend image
-       run: docker build -t $FRONTEND_IMAGE -f BlogFrontend/Dockerfile .
+       run: docker build -t $FRONTEND_IMAGE -f BlogFrontend/Dockerfile ./BlogFrontend
