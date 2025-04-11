@@ -38,3 +38,8 @@ jobs:
 
      - name: Push frontend image
        run: docker push $FRONTEND_IMAGE-${{ env.VERSION_TAG }}
+     
+     - name: Update docker-compose.yml with version tag
+       run: |
+         sed -i "s|blogapi-PLACEHOLDER_TAG|blogapi-${{ env.VERSION_TAG }}|g" docker-compose.yml
+         sed -i "s|blogfrontend-PLACEHOLDER_TAG|blogfrontend-${{ env.VERSION_TAG }}|g" docker-compose.yml
