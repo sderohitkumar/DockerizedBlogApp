@@ -50,4 +50,4 @@ jobs:
          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
          git add .
          git commit -m "Update image tags to ${{ env.VERSION_TAG }}"
-         git push https://x-access-token:${{ secrets.DOCKER_REPO_PAT_TOKEN }}@github.com/${{ github.repository }} HEAD:main
+         git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:main
