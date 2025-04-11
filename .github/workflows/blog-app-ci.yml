@@ -17,13 +17,24 @@ jobs:
      - name: Checkout code
        uses: actions/checkout@v4
 
-     - name: Set version tag
-       id: vars
+     # - name: Set version tag
+     #   id: vars
+     #   run: |
+     #     SHORT_SHA=${GITHUB_SHA::7}
+     #     DATE=$(date +%Y%m%d)
+     #     echo "VERSION_TAG=${DATE}-${SHORT_SHA}" >> $GITHUB_ENV
+
+     - name: Bump version in .env file
+       id: versioning
        run: |
-         SHORT_SHA=${GITHUB_SHA::7}
-         DATE=$(date +%Y%m%d)
-         echo "VERSION_TAG=${DATE}-${SHORT_SHA}" >> $GITHUB_ENV
-  
+        ENV_FILE=.env
+        CURRENT_TAG=$(grep VERSION_TAG $ENV_FILE | cut -d '=' -f2)
+        IFS='.' read -r MAJOR MINOR PATCH <<< "$CURRENT_TAG"
+        PATCH=$((PATCH + 1))
+        NEW_TAG="${MAJOR}.${MINOR}.${PATCH}"
+        sed -i "s/^VERSION_TAG=.*/VERSION_TAG=${NEW_TAG}/" $ENV_FILE
+        echo "VERSION_TAG=${NEW_TAG}" >> $GITHUB_ENV
+
      - name: Docker login
        uses: docker/login-action@v3.3.0
        with:
@@ -42,19 +53,19 @@ jobs:
      - name: Push frontend image
        run: docker push $FRONTEND_IMAGE-${{ env.VERSION_TAG }}
 
-     # - name: Update .env with new tag
-     #   run: | 
-     #       echo "VERSION_TAG=${{ env.VERSION_TAG }}" > ./BlogWebAPI/.env
+     - name: Update .env with new tag
+       run: | 
+           echo "VERSION_TAG=${{ env.VERSION_TAG }}" > .env
      
-     - name: Update docker-compose.yml with version tag
-       run: |
-         sed -i -E "s|(blogapp:blogapi-)[^[:space:]\"']+|\1${{ env.VERSION_TAG }}|g" ./BlogWebAPI/docker-compose.yml
-         sed -i -E "s|(blogapp:blogfrontend-)[^[:space:]\"']+|\1${{ env.VERSION_TAG }}|g" ./BlogWebAPI/docker-compose.yml
+     # - name: Update docker-compose.yml with version tag
+     #   run: |
+     #     sed -i -E "s|(blogapp:blogapi-)[^[:space:]\"']+|\1${{ env.VERSION_TAG }}|g" ./BlogWebAPI/docker-compose.yml
+     #     sed -i -E "s|(blogapp:blogfrontend-)[^[:space:]\"']+|\1${{ env.VERSION_TAG }}|g" ./BlogWebAPI/docker-compose.yml
 
      - name: Commit updated docker-compose.yml
        run: |
          git config --global user.name 'github-actions[bot]'
          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-         git add ./BlogWebAPI/docker-compose.yml
+         git add .
          git commit -m "Update version tag to ${{ env.VERSION_TAG }}"
          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:main

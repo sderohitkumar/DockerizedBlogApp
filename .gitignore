@@ -19,9 +19,13 @@ logs/
 !logs/.gitkeep
 *.tmp
 
-# Ignore environment variables and configurations
-.env
-.env.*
+# Ignore nested .env files only
+**/.env
+**/.env.*
+
+# But keep the root .env file
+!/.env
+
 # appsettings.*.json
 
 # Ignore Docker-related files
