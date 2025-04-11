@@ -43,6 +43,9 @@ jobs:
        run: |
          sed -i "s|blogapi-PLACEHOLDER_TAG|blogapi-${{ env.VERSION_TAG }}|g" ./BlogWebAPI/docker-compose.yml
          sed -i "s|blogfrontend-PLACEHOLDER_TAG|blogfrontend-${{ env.VERSION_TAG }}|g" ./BlogWebAPI/docker-compose.yml
+ 
+     - name: Show diff before commit
+       run: git diff
 
      - name: Commit updated docker-compose.yml
        run: |
