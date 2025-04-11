@@ -20,4 +20,7 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 
+RUN adduser --disabled-password --gecos '' appuser
+USER appuser
+
 ENTRYPOINT ["dotnet", "BlogWebAPI.dll"]
