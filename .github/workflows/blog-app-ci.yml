@@ -44,3 +44,11 @@ jobs:
          sed -i "s|blogapi-PLACEHOLDER_TAG|blogapi-${{ env.VERSION_TAG }}|g" ./BlogWebAPI/docker-compose.yml
          sed -i "s|blogfrontend-PLACEHOLDER_TAG|blogfrontend-${{ env.VERSION_TAG }}|g" ./BlogWebAPI/docker-compose.yml
 
+     - name: Commit updated docker-compose.yml
+       run: |
+         git config --global user.name 'github-actions'
+         git config --global user.email 'github-actions@github.com'
+         git add docker-compose.yml
+         git commit -m "Update image tags to ${{ env.VERSION_TAG }}"
+         git push
+
