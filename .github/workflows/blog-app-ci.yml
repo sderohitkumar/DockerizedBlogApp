@@ -38,19 +38,18 @@ jobs:
 
      - name: Push frontend image
        run: docker push $FRONTEND_IMAGE-${{ env.VERSION_TAG }}
-     
-     - name: Update docker-compose.yml with version tag
-       run: |
-         sed -i "s|blogapi-PLACEHOLDER_TAG|blogapi-${{ env.VERSION_TAG }}|g" ./BlogWebAPI/docker-compose.yml
-         sed -i "s|blogfrontend-PLACEHOLDER_TAG|blogfrontend-${{ env.VERSION_TAG }}|g" ./BlogWebAPI/docker-compose.yml
- 
-     - name: Show diff before commit
-       run: git diff
 
      - name: Commit updated docker-compose.yml
        run: |
          git config --global user.name 'github-actions'
          git config --global user.email 'github-actions@github.com'
+         
+         git clone https://x-access-token:${{ secrets.DOCKER_REPO_PAT_TOKEN }}@github.com/sderohitkumar/DockerizedBlogApp.git
+         cd DockerizedBlogApp
+
+         sed -i "s|blogapi-PLACEHOLDER_TAG|blogapi-${{ env.VERSION_TAG }}|g" ./BlogWebAPI/docker-compose.yml
+         sed -i "s|blogfrontend-PLACEHOLDER_TAG|blogfrontend-${{ env.VERSION_TAG }}|g" ./BlogWebAPI/docker-compose.yml
+
          git add .
          git commit -m "Update image tags to ${{ env.VERSION_TAG }}"
          git push
