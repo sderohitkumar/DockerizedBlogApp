@@ -25,7 +25,7 @@ services:
  
   blogwebapi:
     container_name: BlogWebAPIContainer
-    image: rohitkumar09/blogapp:blogapi-20250411-f9fe144
+    image: rohitkumar09/blogapp:blogapi-${VERSION_TAG}
     ports:
       - 8001:80
     environment:
@@ -38,7 +38,7 @@ services:
    
   blogfrontend:
     container_name: BlogFrontendContainer
-    image: rohitkumar09/blogapp:blogfrontend-20250411-f9fe144
+    image: rohitkumar09/blogapp:blogfrontend-${VERSION_TAG}
     environment: 
       - VITE_APP_ENV=${APP_ENV}
     ports:
