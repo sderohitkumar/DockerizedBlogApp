@@ -38,16 +38,24 @@ jobs:
 
      - name: Push frontend image
        run: docker push $FRONTEND_IMAGE-${{ env.VERSION_TAG }}
+
+     - name: Update .env with new tag
+       run: | 
+           echo "VERSION_TAG=${{ env.VERSION_TAG }}" > ./BlogWebAPI/.env
      
-     - name: Update docker-compose.yml with version tag
-       run: |
-         sed -i "s|blogapi-PLACEHOLDER_TAG|blogapi-${{ env.VERSION_TAG }}|g" ./BlogWebAPI/docker-compose.yml
-         sed -i "s|blogfrontend-PLACEHOLDER_TAG|blogfrontend-${{ env.VERSION_TAG }}|g" ./BlogWebAPI/docker-compose.yml
+     # - name: Update docker-compose.yml with version tag
+     #   run: |
+     #     sed -i "s|blogapi-PLACEHOLDER_TAG|blogapi-${{ env.VERSION_TAG }}|g" ./BlogWebAPI/docker-compose.yml
+     #     sed -i "s|blogfrontend-PLACEHOLDER_TAG|blogfrontend-${{ env.VERSION_TAG }}|g" ./BlogWebAPI/docker-compose.yml
+
+     # - name: Replace placeholders in docker-compose for deployment
+     #   run: |
+     #     sed "s|blogapi-PLACEHOLDER_TAG|blogapi-${{ env.VERSION_TAG }}|g; s|blogfrontend-PLACEHOLDER_TAG|blogfrontend-${{ env.VERSION_TAG }}|g" ./BlogWebAPI/docker-compose.yml > ./BlogWebAPI/docker-compose.temp.yml
 
      - name: Commit updated docker-compose.yml
        run: |
          git config --global user.name 'github-actions[bot]'
          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-         git add .
-         git commit -m "Update image tags to ${{ env.VERSION_TAG }}"
+         git add ./BlogWebAPI/.env
+         git commit -m "Update version tag to ${{ env.VERSION_TAG }}"
          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:main
