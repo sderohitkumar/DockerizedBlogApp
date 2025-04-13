@@ -15,9 +15,9 @@
 # Images used in Application 
 - SQL server -  **mcr.microsoft.com/mssql/server:latest**
 - Redis - **redis:latest**
-- Backend : **rohitkumar09/blogapp:blogapi-v1**
-    - Custom Image created from : BlogWebAPI\BlogWebAPI\Dockerfile
-- Frontend : **rohitkumar09/blogapp:blogfrontend-v1**
+- Backend : **rohitkumar09/blogapp:{currentVersion}**
+    - Custom Image created from : BlogWebApp\BlogWebAPI\Dockerfile
+- Frontend : **rohitkumar09/blogapp:{currentVersion}**
     - Custom Image created from : BlogWebApp\BlogFrontend\Dockerfile
   
 # To run the application
