@@ -6,7 +6,7 @@ EXPOSE 80
 RUN addgroup --system appgroup && adduser --system --ingroup appgroup appuser
 
 # Set permissions (optional, but good practice)
-RUN chown -R appuser:appgroup /usr/share/nginx/html
+RUN chown -R appuser:appgroup /app
 USER appuser
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
