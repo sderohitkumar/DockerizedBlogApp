@@ -3,7 +3,7 @@ WORKDIR /app
 EXPOSE 80
 
 # Create a non-root user and group
-RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+RUN addgroup --system appgroup && adduser --system --ingroup appgroup appuser
 
 # Set permissions (optional, but good practice)
 RUN chown -R appuser:appgroup /usr/share/nginx/html
