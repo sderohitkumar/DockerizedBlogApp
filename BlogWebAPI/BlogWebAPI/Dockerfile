@@ -1,7 +1,13 @@
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
-#USER $APP_UID
 WORKDIR /app
 EXPOSE 80
+
+# Create a non-root user and group
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+
+# Set permissions (optional, but good practice)
+RUN chown -R appuser:appgroup /usr/share/nginx/html
+USER appuser
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
@@ -19,8 +25,5 @@ RUN dotnet publish "./BlogWebAPI.csproj" -c $BUILD_CONFIGURATION -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-
-RUN adduser --disabled-password --gecos '' appuser
-USER appuser
 
 ENTRYPOINT ["dotnet", "BlogWebAPI.dll"]
