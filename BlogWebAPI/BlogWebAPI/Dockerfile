@@ -1,5 +1,5 @@
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
-USER $APP_UID
+#USER $APP_UID
 WORKDIR /app
 EXPOSE 80
 
@@ -20,7 +20,7 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 
-#RUN adduser --disabled-password --gecos '' appuser
-#USER appuser
+RUN adduser --disabled-password --gecos '' appuser
+USER appuser
 
 ENTRYPOINT ["dotnet", "BlogWebAPI.dll"]
