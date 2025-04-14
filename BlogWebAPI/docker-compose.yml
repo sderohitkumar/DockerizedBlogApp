@@ -25,9 +25,6 @@ services:
  
   blogwebapi:
     container_name: BlogWebAPIContainer
-    read_only: true
-    tmpfs:
-      - /tmp
     image: rohitkumar09/blogapi:${VERSION_TAG}
     ports:
       - 8001:80
@@ -41,9 +38,6 @@ services:
    
   blogfrontend:
     container_name: BlogFrontendContainer
-    read_only: true
-    tmpfs:
-      - /tmp
     image: rohitkumar09/blogfrontend:${VERSION_TAG}
     environment: 
       - VITE_APP_ENV=${APP_ENV}
