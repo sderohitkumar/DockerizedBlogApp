@@ -35,7 +35,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
      - name: Build backend image
-       run: docker build -t $BACKEND_IMAGE:${{ env.VERSION_TAG }} -f BlogWebAPI/BlogWebAPI/Dockerfile ./BlogWebAPI
+       run: docker build --no-cache -t $BACKEND_IMAGE:${{ env.VERSION_TAG }} -f BlogWebAPI/BlogWebAPI/Dockerfile ./BlogWebAPI
 
      - name: Build frontend image
        run: docker build -t $FRONTEND_IMAGE:${{ env.VERSION_TAG }} -f BlogFrontend/Dockerfile ./BlogFrontend
