@@ -17,11 +17,12 @@ RUN dotnet build "./BlogWebAPI.csproj" -c $BUILD_CONFIGURATION -o /app/build
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
 RUN dotnet publish "./BlogWebAPI.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+COPY *.json /app/publish/
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-COPY BlogWebAPI/*.json /app/publish/
+
 
 # Optional: set permissions if app needs to write
 # RUN chown -R appuser:appgroup /app
