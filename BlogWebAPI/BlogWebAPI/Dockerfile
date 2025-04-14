@@ -3,7 +3,7 @@ WORKDIR /app
 EXPOSE 80
 
 # Create a non-root user and group
-#RUN addgroup --system appgroup && adduser --system --ingroup appgroup appuser
+RUN addgroup --system appgroup && adduser --system --ingroup appgroup appuser
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
@@ -23,7 +23,7 @@ WORKDIR /app
 COPY --from=publish /app/publish .
 
 # Optional: set permissions if app needs to write
-# RUN chown -R appuser:appgroup /app
-#USER appuser
+RUN chown -R appuser:appgroup /app
+USER appuser
 
 ENTRYPOINT ["dotnet", "BlogWebAPI.dll"]
