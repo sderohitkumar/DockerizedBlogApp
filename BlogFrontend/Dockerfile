@@ -18,15 +18,15 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/dist /usr/share/nginx/html
 
 # Create a non-root user and group
-RUN addgroup --system appgroup && adduser --system --ingroup appgroup appuser
+#RUN addgroup --system appgroup && adduser --system --ingroup appgroup appuser
 
 # Set permissions (optional, but good practice)
-RUN chown -R appuser:appgroup /usr/share/nginx/html
+#RUN chown -R appuser:appgroup /usr/share/nginx/html
 
-RUN mkdir -p /var/cache/nginx/client_temp && \
-    chown -R appuser:appgroup /var/cache/nginx
-
-USER appuser
+#RUN mkdir -p /var/cache/nginx/client_temp && \
+    #chown -R appuser:appgroup /var/cache/nginx
+#
+#USER appuser
 
 EXPOSE 80
 
