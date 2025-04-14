@@ -28,7 +28,7 @@ services:
     read_only: true
     tmpfs:
       - /tmp
-    image: rohitkumar09/blogapp:blogapi-${VERSION_TAG}
+    image: rohitkumar09/blogapi:${VERSION_TAG}
     ports:
       - 8001:80
     environment:
@@ -44,7 +44,7 @@ services:
     read_only: true
     tmpfs:
       - /tmp
-    image: rohitkumar09/blogapp:blogfrontend-${VERSION_TAG}
+    image: rohitkumar09/blogfrontend:${VERSION_TAG}
     environment: 
       - VITE_APP_ENV=${APP_ENV}
     ports:
