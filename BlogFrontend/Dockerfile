@@ -26,6 +26,8 @@ RUN chown -R appuser:appgroup /usr/share/nginx/html
 RUN mkdir -p /var/cache/nginx/client_temp && \
     chown -R appuser:appgroup /var/cache/nginx
 
+RUN mkdir -p /var/run && chown -R appuser:appgroup /var/run
+
 USER appuser
 
 EXPOSE 80
