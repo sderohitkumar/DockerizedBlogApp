@@ -20,8 +20,8 @@ logs/
 *.tmp
 
 # Ignore nested .env files only
-**/.env
-**/.env.*
+BlogWebAPI/.env
+BlogWebAPI/.env.*
 
 # But keep the root .env file
 !/.env
