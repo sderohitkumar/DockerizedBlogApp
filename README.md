@@ -26,8 +26,8 @@
      - ![image](https://github.com/user-attachments/assets/8285c995-bc3b-4566-915f-173261e0562d)
 - Also, define a appsettings.{env}.json, where env is dynamic variable based on which environment you want to run. e.g appsettings.Development.json or appsettings.production.json
      - ![image](https://github.com/user-attachments/assets/dbe505c1-6940-4da8-8c8f-1b9b735fed67)
-- Once env is added , open cmd and enter into wsl and execute the following command along with the env file.
-    - docker compose --env-file .env up
+- Once env is added , go to BlogWebApp\BlogWebAPI folder and open cmd and enter into wsl and execute the start.sh batch file.
+    - It will first check if the docker containers are already running, if so it will stop them and fetch the updated images from docker compose file and start the container.
 - When above command is ran, images are pulled for sql server, redis and custom images for frontend and backend.
 - Once images are downloaded, containers are created and application is started.
 
