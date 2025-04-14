@@ -14,7 +14,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Configuration.AddJsonFile(
         $"appsettings.{environment}.json",
-        optional: false,
+        optional: true,
         reloadOnChange: true
      ).AddEnvironmentVariables();
 
