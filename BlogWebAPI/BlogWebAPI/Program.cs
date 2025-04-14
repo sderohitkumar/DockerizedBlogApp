@@ -13,7 +13,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Configuration.AddJsonFile(
-        $"appsettings.{environment}.json",
+        "appsettings.json",
         optional: false,
         reloadOnChange: true
      ).AddEnvironmentVariables();
