@@ -23,7 +23,6 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 
-
 # Optional: set permissions if app needs to write
 # RUN chown -R appuser:appgroup /app
 #USER appuser
