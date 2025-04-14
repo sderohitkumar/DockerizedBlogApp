@@ -48,7 +48,7 @@ jobs:
 
      - name: Update .env with new tag
        run: | 
-           echo "VERSION_TAG=${{ env.VERSION_TAG }}" > .env
+           printf "VERSION_TAG=%s" "${{ env.VERSION_TAG }}" > .env
 
      - name: Commit updated docker-compose.yml
        run: |
