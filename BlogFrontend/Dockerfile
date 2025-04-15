@@ -18,22 +18,14 @@ COPY nginx.conf /etc/nginx/nginx.conf
 COPY --from=build /app/dist /usr/share/nginx/html
 
 #Create a non-root user and group
-#RUN addgroup --system appgroup && adduser --system --ingroup appgroup appuser
-#
-#RUN chown -R appuser:appgroup /usr/share/nginx/html
-#
-#RUN mkdir -p /var/cache/nginx/client_temp && \
-    #chown -R appuser:appgroup /var/cache/nginx
-#
-#RUN mkdir -p /var/run && chown -R appuser:appgroup /var/run
-#
-#USER appuser
+RUN addgroup --system appgroup && adduser --system --ingroup appgroup appuser
 
-# Create non-root user
-RUN adduser -S appuser
+RUN chown -R appuser:appgroup /usr/share/nginx/html
 
-# Make sure necessary dirs are writable (minimal set)
-RUN chown -R appuser /usr/share/nginx/html /var/cache/nginx /var/run
+RUN mkdir -p /var/cache/nginx/client_temp && \
+    chown -R appuser:appgroup /var/cache/nginx
+
+RUN mkdir -p /var/run && chown -R appuser:appgroup /var/run
 
 USER appuser
 
